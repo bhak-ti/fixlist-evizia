@@ -25,6 +25,26 @@
       background-color: rgba(255, 255, 255, 0.15);
       border: 1px solid rgba(255, 255, 255, 0.3);
     }
+    .glass-card a {
+        background-color: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(4px);
+        position: relative;
+    }
+    
+    .glass-card a:hover {
+        background-color: transparent;
+    }
+    
+    .glass-card a span:last-child {
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+    }
+    
+    .glass-card a:hover span:first-child {
+        color: white;
+    }
   </style>
 </head>
 <body class="font-sans min-h-screen text-white">
@@ -46,10 +66,13 @@
                     <h3 class="ml-4 text-xl font-semibold">JIH JOGJA</h3>
                 </div>
                 <p class="text-white/90 mb-6">Daftar permintaan fitur dari RS JIH Jogja.</p>
-                <a href="https://docs.google.com/spreadsheets/d/1UaecMG5VhCDDlawaEOJCOTB5BeqsDkH1beqHNwRt-jg/edit?gid=0#gid=0" target="_blank" class="block w-full text-center bg-white/20 hover:bg-white/30 text-white font-medium py-2 px-4 rounded-lg transition duration-300 backdrop-blur-sm">
-                    Lihat Spreadsheet
+                <a href="https://docs.google.com/spreadsheets/d/1UaecMG5VhCDDlawaEOJCOTB5BeqsDkH1beqHNwRt-jg/edit?gid=0#gid=0" target="_blank" 
+                class="block w-full text-center text-white font-medium py-2 px-4 rounded-lg transition-all duration-700 overflow-hidden relative group">
+                    <span class="relative z-10">Lihat Spreadsheet</span>
+                    <span class="absolute inset-0 bg-blue-800 transform -translate-x-full group-hover:translate-x-0 transition-all duration-700 ease-in-out z-0"></span>
                 </a>
             </div>
+
             <!-- CARD JIH SOLO -->
             <div class="glass-card rounded-2xl p-6 shadow-xl transition hover:scale-105 duration-300">
                 <div class="flex items-center mb-4">
@@ -59,8 +82,10 @@
                     <h3 class="ml-4 text-xl font-semibold">JIH SOLO</h3>
                 </div>
                 <p class="text-white/90 mb-6">Daftar permintaan fitur dari RS JIH Solo.</p>
-                <a href="####" target="_blank" class="block w-full text-center bg-white/20 hover:bg-white/30 text-white font-medium py-2 px-4 rounded-lg transition duration-300 backdrop-blur-sm">
-                    Lihat Spreadsheet
+                <a href="####" target="_blank" 
+                   class="block w-full text-center text-white font-medium py-2 px-4 rounded-lg transition-all duration-700 overflow-hidden relative group">
+                    <span class="relative z-10">Lihat Spreadsheet</span>
+                    <span class="absolute inset-0 bg-blue-800 transform -translate-x-full group-hover:translate-x-0 transition-all duration-700 ease-in-out z-0"></span>
                 </a>
             </div>
             <!-- CARD JIH PURWOKERTO -->
@@ -72,8 +97,10 @@
                     <h3 class="ml-4 text-xl font-semibold">JIH PURWOKERTO</h3>
                 </div>
                 <p class="text-white/90 mb-6">Daftar permintaan fitur dari RS JIH Purwokerto.</p>
-                <a href="####" target="_blank" class="block w-full text-center bg-white/20 hover:bg-white/30 text-white font-medium py-2 px-4 rounded-lg transition duration-300 backdrop-blur-sm">
-                    Lihat Spreadsheet
+                <a href="####" target="_blank" 
+                   class="block w-full text-center text-white font-medium py-2 px-4 rounded-lg transition-all duration-700 overflow-hidden relative group">
+                    <span class="relative z-10">Lihat Spreadsheet</span>
+                    <span class="absolute inset-0 bg-blue-800 transform -translate-x-full group-hover:translate-x-0 transition-all duration-700 ease-in-out z-0"></span>
                 </a>
             </div>
             <!-- CARD RS UII -->
@@ -85,8 +112,10 @@
                     <h3 class="ml-4 text-xl font-semibold">RS UII</h3>
                 </div>
                 <p class="text-white/90 mb-6">Daftar permintaan fitur dari RS UII.</p>
-                <a href="https://docs.google.com/spreadsheets/d/1rwj1CXi-_xGlRE7wkdrPqIcx0RuJoXX2ah8StKC4Dy8/edit?gid=0#gid=0" target="_blank" class="block w-full text-center bg-white/20 hover:bg-white/30 text-white font-medium py-2 px-4 rounded-lg transition duration-300 backdrop-blur-sm">
-                    Lihat Spreadsheet
+                <a href="https://docs.google.com/spreadsheets/d/1rwj1CXi-_xGlRE7wkdrPqIcx0RuJoXX2ah8StKC4Dy8/edit?gid=0#gid=0" target="_blank" 
+                   class="block w-full text-center text-white font-medium py-2 px-4 rounded-lg transition-all duration-700 overflow-hidden relative group">
+                    <span class="relative z-10">Lihat Spreadsheet</span>
+                    <span class="absolute inset-0 bg-blue-800 transform -translate-x-full group-hover:translate-x-0 transition-all duration-700 ease-in-out z-0"></span>
                 </a>
             </div>
             <!-- CARD RSI MAGELANG -->
@@ -98,8 +127,10 @@
                     <h3 class="ml-4 text-xl font-semibold">RSI MAGELANG</h3>
                 </div>
                 <p class="text-white/90 mb-6">Daftar permintaan fitur dari RSI Magelang.</p>
-                <a href="https://docs.google.com/spreadsheets/d/1rwj1CXi-_xGlRE7wkdrPqIcx0RuJoXX2ah8StKC4Dy8/edit?gid=0#gid=0" target="_blank" class="block w-full text-center bg-white/20 hover:bg-white/30 text-white font-medium py-2 px-4 rounded-lg transition duration-300 backdrop-blur-sm">
-                    Lihat Spreadsheet
+                <a href="https://docs.google.com/spreadsheets/d/1rwj1CXi-_xGlRE7wkdrPqIcx0RuJoXX2ah8StKC4Dy8/edit?gid=0#gid=0" target="_blank" 
+                   class="block w-full text-center text-white font-medium py-2 px-4 rounded-lg transition-all duration-700 overflow-hidden relative group">
+                    <span class="relative z-10">Lihat Spreadsheet</span>
+                    <span class="absolute inset-0 bg-blue-800 transform -translate-x-full group-hover:translate-x-0 transition-all duration-700 ease-in-out z-0"></span>
                 </a>
             </div>
             <!-- CARD RS UAD -->
@@ -111,11 +142,12 @@
                     <h3 class="ml-4 text-xl font-semibold">RS UAD</h3>
                 </div>
                 <p class="text-white/90 mb-6">Daftar permintaan fitur dari RS UAD.</p>
-                <a href="https://docs.google.com/spreadsheets/d/10tOiB7tvxnPTbKG-eOQBbNa9XwLPNfY9YD-yao7AjCU/edit?gid=0#gid=0" target="_blank" class="block w-full text-center bg-white/20 hover:bg-white/30 text-white font-medium py-2 px-4 rounded-lg transition duration-300 backdrop-blur-sm">
-                    Lihat Spreadsheet
+                <a href="https://docs.google.com/spreadsheets/d/10tOiB7tvxnPTbKG-eOQBbNa9XwLPNfY9YD-yao7AjCU/edit?gid=0#gid=0" target="_blank" 
+                   class="block w-full text-center text-white font-medium py-2 px-4 rounded-lg transition-all duration-700 overflow-hidden relative group">
+                    <span class="relative z-10">Lihat Spreadsheet</span>
+                    <span class="absolute inset-0 bg-blue-800 transform -translate-x-full group-hover:translate-x-0 transition-all duration-700 ease-in-out z-0"></span>
                 </a>
             </div>
-            <!-- Tambah card lain di sini -->
         </div>
     </div>
     <!-- Footer -->
