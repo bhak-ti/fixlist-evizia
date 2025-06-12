@@ -51,6 +51,9 @@
     <div class="container mx-auto px-4 py-16">
         <div class="text-center mb-12">
             <h1 class="text-4xl md:text-5xl font-bold mb-3">Fixlist Evizia</h1>
+            <div id="datetime" class="flex justify-center items-center gap-4 text-base md:text-lg text-white/80 mb-2 font-medium">
+                <!-- Isi tanggal dan waktu akan diisi oleh JS -->
+            </div>
             <p class="text-lg text-white/90 max-w-2xl mx-auto">
                 Klik salah satu site untuk membuka daftar permintaan fitur via Google Spreadsheet.
             </p>
@@ -157,5 +160,27 @@
             <span class="text-white/90 text-sm">© 2025 Evizia. All rights reserved.</span>
         </div>
     </footer>
+    <script>
+      function pad(n) { return n < 10 ? '0' + n : n; }
+      function updateDateTime() {
+        const now = new Date();
+        const days = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
+        const months = [
+          'Januari','Februari','Maret','April','Mei','Juni',
+          'Juli','Agustus','September','Oktober','November','Desember'
+        ];
+        const day = days[now.getDay()];
+        const date = now.getDate();
+        const month = months[now.getMonth()];
+        const year = now.getFullYear();
+        const time = pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
+        document.getElementById('datetime').innerHTML =
+          `<i class="fa-solid fa-calendar-days mr-2"></i> ${day}, ${date} ${month} ${year}
+           <span class="mx-2">•</span>
+           <i class="fa-solid fa-clock mr-2"></i> ${time}`;
+      }
+      updateDateTime();
+      setInterval(updateDateTime, 1000);
+    </script>
 </body>
 </html>
