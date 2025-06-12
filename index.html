@@ -51,8 +51,22 @@
     <div class="container mx-auto px-4 py-16">
         <div class="text-center mb-12">
             <h1 class="text-4xl md:text-5xl font-bold mb-3">Fixlist Evizia</h1>
-            <div id="datetime" class="flex justify-center items-center gap-4 text-base md:text-lg text-white/80 mb-2 font-medium">
-                <!-- Isi tanggal dan waktu akan diisi oleh JS -->
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4 text-base md:text-lg text-white/80 mb-2 font-medium">
+                <!-- Widget Date & Time -->
+                <div id="datetime-widget" class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-lg shadow border border-white/20">
+                    <i class="fa-solid fa-calendar-days text-blue-300"></i>
+                    <span id="date"></span>
+                    <span class="mx-2">|</span>
+                    <i class="fa-solid fa-clock text-yellow-300"></i>
+                    <span id="time"></span>
+                </div>
+                <!-- Widget Weather -->
+                <div id="weather-widget" class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-lg shadow border border-white/20">
+                    <i class="fa-solid fa-cloud-sun text-cyan-200"></i>
+                    <span id="weather-desc">Memuat...</span>
+                    <span id="weather-temp"></span>
+                    <span class="text-xs text-white/60 ml-1">Sleman</span>
+                </div>
             </div>
             <p class="text-lg text-white/90 max-w-2xl mx-auto">
                 Klik salah satu site untuk membuka daftar permintaan fitur via Google Spreadsheet.
@@ -161,26 +175,62 @@
         </div>
     </footer>
     <script>
-      function pad(n) { return n < 10 ? '0' + n : n; }
-      function updateDateTime() {
-        const now = new Date();
-        const days = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
-        const months = [
-          'Januari','Februari','Maret','April','Mei','Juni',
-          'Juli','Agustus','September','Oktober','November','Desember'
-        ];
-        const day = days[now.getDay()];
-        const date = now.getDate();
-        const month = months[now.getMonth()];
-        const year = now.getFullYear();
-        const time = pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
-        document.getElementById('datetime').innerHTML =
-          `<i class="fa-solid fa-calendar-days mr-2"></i> ${day}, ${date} ${month} ${year}
-           <span class="mx-2">•</span>
-           <i class="fa-solid fa-clock mr-2"></i> ${time}`;
-      }
-      updateDateTime();
-      setInterval(updateDateTime, 1000);
-    </script>
+     // Date & Time Widget
+  function pad(n) { return n < 10 ? '0' + n : n; }
+  function updateDateTimeWidget() {
+    const now = new Date();
+    const days = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
+    const months = [
+      'Januari','Februari','Maret','April','Mei','Juni',
+      'Juli','Agustus','September','Oktober','November','Desember'
+    ];
+    const day = days[now.getDay()];
+    const date = now.getDate();
+    const month = months[now.getMonth()];
+    const year = now.getFullYear();
+    const time = pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
+    document.getElementById('date').textContent = `${day}, ${date} ${month} ${year}`;
+    document.getElementById('time').textContent = time;
+  }
+  updateDateTimeWidget();
+  setInterval(updateDateTimeWidget, 1000);
+
+  // Weather Widget (Open-Meteo API, Sleman: lat -7.72, lon 110.36)
+  async function updateWeatherWidget() {
+    try {
+      const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=-7.72&longitude=110.36&current_weather=true&timezone=Asia%2FBangkok');
+      const data = await res.json();
+      const weather = data.current_weather;
+      const temp = Math.round(weather.temperature);
+      const code = weather.weathercode;
+      // Weather code to description (simple)
+      const descMap = {
+        0: 'Cerah',
+        1: 'Cerah Berawan',
+        2: 'Berawan',
+        3: 'Mendung',
+        45: 'Berkabut',
+        48: 'Kabut Es',
+        51: 'Gerimis',
+        53: 'Gerimis',
+        55: 'Gerimis',
+        61: 'Hujan Ringan',
+        63: 'Hujan',
+        65: 'Hujan Lebat',
+        80: 'Hujan Lokal',
+        81: 'Hujan Lokal',
+        82: 'Hujan Lebat',
+      };
+      document.getElementById('weather-desc').textContent = descMap[code] || 'Cuaca';
+      document.getElementById('weather-temp').textContent = `${temp}°C`;
+    } catch (e) {
+      document.getElementById('weather-desc').textContent = 'Gagal memuat cuaca';
+      document.getElementById('weather-temp').textContent = '';
+    }
+  }
+  updateWeatherWidget();
+  setInterval(updateWeatherWidget, 600000);
+
+ </script>
 </body>
 </html>
